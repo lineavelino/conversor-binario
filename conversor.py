@@ -1,40 +1,38 @@
-base10 = int(input("Número a ser convertido (base 10): "))
+def changeAds(base10):
+    arrMod = []
+    arrBin = []
 
-arrMod = []
-arrBin = []
+    result = base10 // 2 
+    mod = base10 % 2
 
-result = base10 // 2 
-mod = base10 % 2
-
-arrMod.append(mod)
-
-while result >= 2:
-    mod = result % 2
-    result = result // 2
     arrMod.append(mod)
 
-arrMod.append(result)
-arrMod.reverse()
+    while result >= 2:
+        mod = result % 2
+        result = result // 2
+        arrMod.append(mod)
 
-for i in arrMod:
-    if i == 1:
-        i = 0
-        arrBin.append(i)
-    else:
-        i = 1
-        arrBin.append(i)
+    arrMod.append(result)
+    arrMod.reverse()
 
-length = len(arrBin)-1
-decimal = 0
+    for i in arrMod:
+        if i == 1:
+            i = 0
+            arrBin.append(i)
+        else:
+            i = 1
+            arrBin.append(i)
 
-for i in arrBin:
-    n = i*2**length
-    length = length - 1
-    decimal = decimal + n
+    length = len(arrBin)-1
+    decimal = 0
 
-binario = ''.join([str(n) for n in arrMod])
-binarioInvertido = ''.join([str(n) for n in arrBin])
+    for i in arrBin:
+        n = i*2**length
+        length = length - 1
+        decimal = decimal + n
     
-print("binario:", binario)
-print("binario invertido:", binarioInvertido)
-print("decimal:", decimal)
+    return print(decimal)
+
+base10 = int(input("Número a ser convertido (base 10): "))
+
+changeAds(base10)
